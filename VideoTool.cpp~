@@ -242,18 +242,18 @@ int z=0,t=0;
 		//threshold matrix
 		inRange(HSV, Scalar(H_MIN, S_MIN, V_MIN), Scalar(H_MAX, S_MAX, V_MAX), threshold);
 		inRange(HSV, Scalar(H_MIN2, S_MIN2, V_MIN2), Scalar(H_MAX2, S_MAX2, V_MAX2), threshold2);
+		
+		
+		if (trackObjects){
+			trackFilteredObject(x, y, threshold, cameraFeed);
+			trackFilteredObject(z, t, threshold2, cameraFeed);
+		}
 			
 
 		if (useMorphOps){
 			morphOps(threshold);
 			morphOps(threshold2);
 		}
-
-if (trackObjects){
-			trackFilteredObject(x, y, threshold, cameraFeed);
-			trackFilteredObject(z, t, threshold2, cameraFeed);
-		}
-		
 		//perform morphological operations on thresholded image to eliminate noise
 		//and emphasize the filtered object(s)
 		
