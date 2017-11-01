@@ -9,6 +9,26 @@
 #include <errno.h>
 #include <arpa/inet.h> 
 
+void transmiteComenzi(char *comenzi, int sockfd){	
+	int i,j=0;
+	char nou[20], msg[20];
+	for(i=0;i<strlen(comenzi);i++){
+		if(strchr("fslrb", comenzi[i])!=NULL){
+			nou[j]=comenzi[i];
+			j++;
+		}
+	}	
+	for(i=0;i<j;i++){
+		sprintf(msg, "%c", nou[i]);
+		if( send(sockfd , msg , strlen(msg) , 0) < 0)
+        	{
+            		puts("Send failed");
+            		return 1;
+        	}
+		sleep(1);
+	}
+}
+
 int main(int argc, char *argv[])
 {
     int sockfd = 0, i, j;
@@ -39,7 +59,7 @@ int main(int argc, char *argv[])
        return 1;
     } 
     
-    sprintf(message, "%c", 'f');
+  /*  sprintf(message, "%c", 'f');
    if( send(sockfd , message , strlen(message) , 0) < 0)
         {
             puts("Send failed");
@@ -55,6 +75,8 @@ sprintf(message, "%c", 's');
             puts("Send failed");
             return 1;
         }
+*/
 
+transmiteComenzi(argv[1], sockfd);
     return 0;
 }
