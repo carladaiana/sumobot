@@ -1,1 +1,1 @@
-/home/cloud/ionut/sumobot/sumobot/CMakeFiles/VideoTool.dir
+/home/cloud/sumobot/CMakeFiles/VideoTool.dir

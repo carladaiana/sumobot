@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
     memset(&serv_addr, '0', sizeof(serv_addr)); 
 
     serv_addr.sin_family = AF_INET;
-    serv_addr.sin_port = htons(20236); 
+    serv_addr.sin_port = htons(20232); 
 
     if(inet_pton(AF_INET, "193.226.12.217", &serv_addr.sin_addr)<=0)
     {
